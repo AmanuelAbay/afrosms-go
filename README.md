@@ -33,7 +33,7 @@ To run this project, you will need to add the following environment variables to
 Note that you need to include the **v** in the version tag.
 
 ~~~bash
-go mod init github.com/amanuelabay/afrosms-go@v1.0.0
+go mod init github.com/amanuelabay/afrosms-go@v1.0.4
 ~~~
 
 
@@ -42,9 +42,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/amanuelabay/afrosms-go"
+	afro "github.com/amanuelabay/afrosms-go"
 	"os"
-    "fmt"
+        "fmt"
 )
 
 
@@ -58,13 +58,13 @@ func main(){
     
     request := afro.GetRequest(API_KEY, END_POINT, HOST)
     request.Method = "GET"
-	request.Sender(AFRO_SMS_SENDER_NAME)
+    request.Sender(AFRO_SMS_SENDER_NAME)
     Message := "Hey, from afro sms"
     request.To(AFRO_SMS_RECEIVER_PHONE_NUMBER, Message)
 
 	response, err := afro.Api(request)
 
-    if response["acknowledgement"] == "success" {
+    if response["acknowledge"] == "success" {
         fmt.Println("message_successfully_sent!")
         fmt.Println(response["response"])
     }else {
