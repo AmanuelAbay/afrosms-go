@@ -13,20 +13,7 @@ import (
 )
 
 // network response type
-type Response struct {
-
-	// response status
-	Acknowledgement string
-
-	//response data type
-	Response struct {
-		Status    *string   `json:"status,omitempty"`
-		MessageId *string   `json:"message_id,omitempty"`
-		Message   *string   `json:"message,omitempty"`
-		To        *string   `json:"to,omitempty"`
-		Errors    *[]string `json:"errors,omitempty"`
-	} `json:"omitempty"`
-}
+type Response map[string]interface{}
 
 // make request
 func (c *Client) MakeRequest(req *http.Request) (*http.Response, error) {
@@ -42,16 +29,16 @@ type Client struct {
 var DefaultClient = &Client{HTTPClient: &http.Client{}}
 
 // build request to sent request
-func Api(request Request) (*Response, error) {
+func Api(request Request) (Response, error) {
 	return MakeRequest(request)
 }
 
 // MakeRequest make the request with context
-func MakeRequest(request Request) (*Response, error) {
+func MakeRequest(request Request) (Response, error) {
 	return MakeRequestWithContext(context.Background(), request)
 }
 
-func MakeRequestWithContext(ctx context.Context, request Request) (*Response, error) {
+func MakeRequestWithContext(ctx context.Context, request Request) (Response, error) {
 	return DefaultClient.SendWithContext(ctx, request)
 }
 
@@ -85,7 +72,7 @@ func BuildRequestObject(request Request) (*http.Request, error) {
 }
 
 // BuildResponse builds the response struct.
-func BuildResponse(res *http.Response) (response *Response, err error) {
+func BuildResponse(res *http.Response) (response Response, err error) {
 
 	// get and decode request response
 	err = json.NewDecoder(res.Body).Decode(&response)
@@ -93,11 +80,12 @@ func BuildResponse(res *http.Response) (response *Response, err error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return response, err
 }
 
 // SendWithContext will build your request passing in the provided context, make the request, and build your response.
-func (c *Client) SendWithContext(ctx context.Context, request Request) (*Response, error) {
+func (c *Client) SendWithContext(ctx context.Context, request Request) (Response, error) {
 
 	// Build the HTTP request object.
 	req, err := BuildRequestObject(request)
