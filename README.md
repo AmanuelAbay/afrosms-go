@@ -26,6 +26,8 @@ To run this project, you will need to add the following environment variables to
 
 `AFRO_SMS_SENDER_NAME` 
 
+`AFRO_SMS_RECEIVER_PHONE_NUMBER` 
+
 ## Get the afrosms-go module
 
 Note that you need to include the **v** in the version tag.
