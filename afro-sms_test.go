@@ -6,6 +6,7 @@
 package afro
 
 import (
+	"os"
 	"testing"
 )
 
@@ -51,16 +52,17 @@ func TestCallBackUrl(t *testing.T) {
 }
 
 func TestApi(t *testing.T) {
-	expected := Response{}
-	SenderName := "AFRO_SMS_SENDER_NAME"
-	PhoneNumber := "+2519xxxxxxxxx"
-	Message := "afro-sms test text message"
+	expected := "success"
+	AFRO_SMS_API_KEY := os.Getenv("AFRO_SMS_API_KEY")
+	AFRO_SMS_SENDER_NAME := os.Getenv("AFRO_SMS_SENDER_NAME")
+	AFRO_SMS_RECEIVER_PHONE_NUMBER := os.Getenv("AFRO_SMS_RECEIVER_PHONE_NUMBER")
+	Message := "assessment schedule from hahujobs"
 
-	request := GetRequest("AFRO_SMS_TOKEN", "/api/send", "https://api.afromessage.com")
+	request := GetRequest(AFRO_SMS_API_KEY, "/api/send", "https://api.afromessage.com")
 	request.Method = "GET"
-	request.Sender(SenderName)
-	request.To(PhoneNumber, Message)
-	if got, _ := Api(request); got != &expected {
-		t.Errorf("Api(%s) =, didn't work as expected", request)
+	request.Sender(AFRO_SMS_SENDER_NAME)
+	request.To(AFRO_SMS_RECEIVER_PHONE_NUMBER, Message)
+	if got, _ := Api(request); got["acknowledgement"] != expected {
+		t.Errorf("Api(%s) = %s, didn't work as expected", got["acknowledgement"], expected)
 	}
 }
