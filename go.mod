@@ -1,3 +1,3 @@
-module github.com/AmanuelAbay/afrosms-go
+module github.com/amanuelabay/afrosms-go
 
 go 1.21.6
