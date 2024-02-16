@@ -15,7 +15,7 @@ This library allows you to quickly and easily use the afro-sms Web API via Go.
 ## Initialize your module
 
 ~~~bash
-go get init example.com/my-afrosms-demo
+go mod init example.com/my-afrosms-demo
 ~~~
 
 ## Environment Variables  
@@ -33,7 +33,7 @@ To run this project, you will need to add the following environment variables to
 Note that you need to include the **v** in the version tag.
 
 ~~~bash
-go mod init github.com/amanuelabay/afrosms-go@v1.0.4
+go get github.com/amanuelabay/afrosms-go
 ~~~
 
 
