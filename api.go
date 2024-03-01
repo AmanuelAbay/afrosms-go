@@ -59,6 +59,7 @@ func BuildRequestObject(request Request) (*http.Request, error) {
 	if len(request.QueryParams) != 0 {
 		request.BaseURL = AddQueryParameters(request.BaseURL, request.QueryParams)
 	}
+
 	req, err := http.NewRequest(string(request.Method), request.BaseURL, nil)
 	if err != nil {
 		return req, err
