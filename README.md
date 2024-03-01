@@ -2,7 +2,7 @@
 
 # AfroSms
 
-This library allows you to quickly and easily use the afro-sms Web API via Go.
+This library allows you to quickly and easily use the afro-sms web API via Go.
 
 ## Badges  
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)  
@@ -29,8 +29,6 @@ To run this project, you will need to add the following environment variables to
 `AFRO_SMS_RECEIVER_PHONE_NUMBER` 
 
 ## Get the afrosms-go module
-
-Note that you need to include the **v** in the version tag.
 
 ~~~bash
 go get github.com/amanuelabay/afrosms-go
@@ -81,7 +79,7 @@ func main(){
 
 
 ## Authors  
-- [@Amanuel Abay](https://www.github.com/amanuelabay) 
+- [@Amanuel Abay](https://www.github.com/amanuelabay)
 
 ## Documentation  
 [Documentation](https://www.afromessage.com/developers)
