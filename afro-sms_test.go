@@ -56,7 +56,7 @@ func TestApi(t *testing.T) {
 	AFRO_SMS_API_KEY := os.Getenv("AFRO_SMS_API_KEY")
 	AFRO_SMS_SENDER_NAME := os.Getenv("AFRO_SMS_SENDER_NAME")
 	AFRO_SMS_RECEIVER_PHONE_NUMBER := os.Getenv("AFRO_SMS_RECEIVER_PHONE_NUMBER")
-	Message := "assessment schedule from hahujobs"
+	Message := "afro sms test message"
 
 	request := GetRequest(AFRO_SMS_API_KEY, "/api/send", "https://api.afromessage.com")
 	request.Method = "GET"
