@@ -6,7 +6,7 @@
 package afro
 
 const (
-	Version = "1.0.6"
+	Version = "1.0.0"
 )
 
 // afroSmsOptions for CreateRequest
